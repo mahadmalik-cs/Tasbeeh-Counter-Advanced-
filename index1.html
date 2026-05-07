@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasbeeh Counter</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            padding: 20px;
+        }
+
+        .container{
+            width: 100%;
+            max-width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+        }
+
+        h1{
+            color: #1b4332;
+            margin-bottom: 20px;
+        }
+
+        img{
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 4px solid #2d6a4f;
+            transition: 0.4s;
+        }
+
+        h2{
+            font-size: 55px;
+            color: #081c15;
+            margin-bottom: 20px;
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #inc{
+            background: #2d6a4f;
+            color: white;
+        }
+
+        #inc:hover{
+            background: #1b4332;
+        }
+
+        #reset{
+            background: #d90429;
+            color: white;
+        }
+
+        #reset:hover{
+            background: #a3031d;
+        }
+
+        @media(max-width:500px){
+
+            .container{
+                padding: 20px;
+            }
+
+            h2{
+                font-size: 40px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📿 Tasbeeh Counter</h1>
+
+        <img id="image" src="Subhanallah.jpg">
+
+        <h2 id="count">0</h2>
+
+        <button id="inc">Count</button>
+
+        <button id="reset">Reset</button>
+
+        <!-- Sound -->
+        <audio id="clickSound" src="mouse click.mp3"></audio>
+
+    </div>
+
+<script>
+
+    let count = 0
+
+    let display = document.getElementById("count")
+
+    let inc = document.getElementById("inc")
+
+    let reset = document.getElementById("reset")
+
+    let sound = document.getElementById("clickSound")
+
+    let image = document.getElementById("image")
+
+
+    inc.addEventListener("click", ()=>{
+
+        count++
+
+        display.innerText = count
+
+        sound.currentTime = 0
+
+        sound.play()
+
+
+        if(count <= 33){
+
+            image.src = "Subhanallah.jpg"
+
+        }
+
+        else if(count <= 66){
+
+            image.src = "Alhamdulillah.jpg"
+
+        }
+
+        else{
+
+            image.src = "Allahoakbar.jpg"
+
+        }
+
+    })
+
+
+    // Reset Button EventListener
+
+    reset.addEventListener("click", ()=>{
+
+        count = 0
+
+        display.innerText = count
+
+        image.src = "Subhanallah.jpg"
+
+    })
+
+</script>
+
+</body>
+</html>
